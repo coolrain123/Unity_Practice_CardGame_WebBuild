@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,12 +9,21 @@ public class GameManager : MonoBehaviour
     public GameObject[] cards;
     [Header("發牌按鈕")]
     public Button btnGetCard;
-    
+
+    public Button reBtn;
+
     private int player, pc;     // 玩家、電腦卡片編號
 
     private void Start()
     {
         aud = GetComponent<AudioSource>();
+        
+        reBtn.onClick.AddListener(GameReset);   //按下重來時呼叫  GameReset
+    }
+
+    void GameReset()
+    {        
+            Application.LoadLevel(0);   //跳到場景(0)
     }
 
     /// <summary>
@@ -21,7 +31,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void PlayerGetCard()
     {
-        btnGetCard.interactable = false;
+        btnGetCard.interactable = false;  //發卡鈕變成不能按
+
         player = GetCard(new Vector3(0, -3, 0));
 
         Invoke("PcGetCard", 1.5f);
@@ -62,7 +73,9 @@ public class GameManager : MonoBehaviour
 
     private AudioSource aud;        // 音效來源：喇叭
 
-
+    public GameObject re;
+    public GameObject gametext;
+    
     /// <summary>
     /// 勝負顯示：使用玩家與電腦取得卡片判斷獲勝、平手或失敗
     /// 玩家卡片編號：player
@@ -71,7 +84,27 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void GameWinner()
     {
-        
+        if (player > pc)
+        {
+            re.SetActive(true);
+            aud.PlayOneShot(soundWin, 1f);
+        }
+        else if(player < pc)
+        {
+            gametext.GetComponent<Text>().text = "失敗";
+            re.SetActive(true);
+            aud.PlayOneShot(soundLose, 1f);
+        }
+        else if(player == pc)
+        {
+            gametext.GetComponent<Text>().text = "平手";
+            re.SetActive(true);
+            aud.PlayOneShot(soundTie, 1f);
+        }
+            
     }
+
+    
+
     #endregion
 }

@@ -530,10 +530,13 @@ MonoBehaviour:
   - {fileID: 100000, guid: da2d1fefc52dcde4db0b9c8ab07e55a3, type: 3}
   - {fileID: 100000, guid: b6cf9c34e3fc75646bb7d83e75ecd2eb, type: 3}
   btnGetCard: {fileID: 1117043966}
+  reBtn: {fileID: 1511313311}
   soundGetCard: {fileID: 8300000, guid: ba2eb27d5ca5d0849b5a056ca8436a28, type: 3}
   soundWin: {fileID: 8300000, guid: c56457de3a8bf4d4d8191bddca0a4d82, type: 3}
-  soundLose: {fileID: 8300000, guid: e954741e0310d6e439a4e614f15ee793, type: 3}
-  soundTie: {fileID: 8300000, guid: e1ed5e7bdcf877343b7a96f92fa6a7e0, type: 3}
+  soundLose: {fileID: 8300000, guid: e1ed5e7bdcf877343b7a96f92fa6a7e0, type: 3}
+  soundTie: {fileID: 8300000, guid: e954741e0310d6e439a4e614f15ee793, type: 3}
+  re: {fileID: 1575089947}
+  gametext: {fileID: 2121032002}
 --- !u!82 &975463749
 AudioSource:
   m_ObjectHideFlags: 0
